@@ -11,10 +11,11 @@ public class AlgoRhythm1
 		int power  = Integer.MAX_VALUE; // 2^31-1= k
 		int division = 5;//=m
 		int result1;
+		int result2;
 		//int runtime1;
-		result1 = powmod(base, power, division);
-		//runtime1 = ;
-		System.out.printf("longer way =",result1);
+		//result1 = powmod(base, power, division);
+		result2 = smartPowmod(base,power,division);
+		System.out.printf("faster way =",result2);
 
 	}//main
 	/*
@@ -34,6 +35,29 @@ public class AlgoRhythm1
 		return (int)  t;
 	}//powmod
 	
+	/* when k = 2t,   n^k = n^t * n^t
+	*  when k = 2t+1, n^k = n^t * n^t * n
+	*  attention that these show up n^t raptly  
+	*/
+	static int smartPowmod(int a, int k, int m)
+	{
+		if(k == 0)
+		{
+			return 1; // it does not matter what the base is, if power is 1, then result is always 1;
+		}
+		long t = smartPowmod(a, k/2, m);
+		t = (t * t ) % m;
+		if(k % 2 == 1)
+		{
+			t = (t * a ) % m;
+		}
+		
+		
+		return (int) t;
+	}
+	
+
+
 	
 	
 	
