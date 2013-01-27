@@ -13,10 +13,11 @@ public class AlgoRhythm1
 		int result1;
 		int result2;
 		//int runtime1;
-		//result1 = powmod(base, power, division);
+		result1 = powmod(base, power, division);
+		System.out.printf("\nslower way = %d",result1);
 		result2 = smartPowmod(base,power,division);
-		System.out.printf("faster way =",result2);
-
+		System.out.printf("faster way = %d",result2);
+		
 	}//main
 	/*
 	 * poemod method that find the reminder of (a^k)/m. 
